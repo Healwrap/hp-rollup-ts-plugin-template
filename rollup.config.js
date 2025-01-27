@@ -1,10 +1,10 @@
-import typescript from '@rollup/plugin-typescript'
-import dts from 'rollup-plugin-dts'
-import babel from '@rollup/plugin-babel'
-import terser from '@rollup/plugin-terser'
-import nodeResolve from '@rollup/plugin-node-resolve'
-import commonjs from '@rollup/plugin-commonjs'
-import eslint from '@rollup/plugin-eslint'
+import typescript from '@rollup/plugin-typescript';
+import dts from 'rollup-plugin-dts';
+import babel from '@rollup/plugin-babel';
+import terser from '@rollup/plugin-terser';
+import nodeResolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import eslint from '@rollup/plugin-eslint';
 
 const config = [
   {
@@ -37,5 +37,5 @@ const config = [
     output: [{ dir: 'build/type', format: 'es', preserveModules: true }],
     plugins: [dts()],
   },
-]
+];
 export default config;

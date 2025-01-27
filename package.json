@@ -5,24 +5,27 @@
   "type": "module",
   "main": "main.ts",
   "scripts": {
+    "prepare": "husky install",
     "clear": "rimraf build",
     "build": "npm run clear && rollup -c",
     "publish": "npm run build && npm publish --access public",
     "publish-patch": "node ./scripts/publish.js patch && npm run publish",
     "publish-minor": "node ./scripts/publish.js minor && npm run publish",
     "publish-major": "node ./scripts/publish.js major && npm run publish",
-    "format": "prettier --write ./"
+    "format": "prettier --write ./",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx,.vue --ignore-path .gitignore",
+    "lint:fix": "eslint . --ext .ts,.tsx,.js,.jsx,.vue --ignore-path .gitignore --fix",
+    "precommit": "lint-staged"
   },
-  "keywords": [
-  ],
+  "keywords": [],
   "author": "pepedd864",
   "license": "ISC",
-  "dependencies": {
-  },
   "devDependencies": {
     "@babel/core": "^7.24.7",
     "@babel/preset-env": "^7.24.7",
     "@babel/preset-typescript": "^7.24.7",
+    "@commitlint/cli": "^13.2.1",
+    "@commitlint/config-conventional": "^13.2.0",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^26.0.1",
     "@rollup/plugin-eslint": "^9.0.5",
@@ -30,15 +33,45 @@
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.6",
     "@types/node": "^20.12.12",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
-    "eslint": "^8.45.0",
-    "prettier": "^3.0.3",
+    "husky": "^7.0.2",
+    "lint-staged": "^15.2.10",
     "rimraf": "^5.0.7",
     "rollup": "^4.18.0",
     "rollup-plugin-dts": "^6.1.1",
     "ts-node": "^10.9.1",
     "tslib": "^2.6.3",
-    "typescript": "^5.3.3"
+    "typescript": "^4.0.0",
+    "prettier": "^3.3.3",
+    "@typescript-eslint/eslint-plugin": "^4.7.0",
+    "@typescript-eslint/parser": "^4.7.0",
+    "eslint": "7.17.0",
+    "eslint-config-airbnb-base": "14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-html": "6.1.1",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-vue": "7.4.1",
+    "vue-eslint-parser": "7.3.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,vue}": [
+      "eslint --fix --ignore-path .gitignore",
+      "prettier --write --ignore-unknown"
+    ],
+    "!(*.ts|*.tsx|*.js|*.jsx|*.vue)": "prettier --write --ignore-unknown"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "rules": {
+      "subject-case": [
+        2,
+        "always",
+        [
+          "sentence-case",
+          "lower-case"
+        ]
+      ]
+    }
   }
 }

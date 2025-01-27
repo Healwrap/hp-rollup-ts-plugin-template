@@ -23,7 +23,8 @@
   "exclude": [
     // 不参与打包的目录
     "node_modules",
-    "build"
+    "build",
+    "dist"
   ],
   "esModuleInterop": true,
   "allowSyntheticDefaultImports": true,
