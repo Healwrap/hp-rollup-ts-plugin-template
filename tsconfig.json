@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2017",
+    "target": "es6",
     "module": "ESNext",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
@@ -13,11 +13,16 @@
     "importHelpers": false,
     "strictNullChecks": false,
     "allowUnreachableCode": true,
-    "lib": ["es6", "dom"],
-    "typeRoots": ["./node_modules/@types"],
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
     "outDir": "./build",
     // 重定向输出目录
-    "rootDir": "./src"
+    "rootDir": "./packages"
     // 仅用来控制输出的目录结构
   },
   "exclude": [
@@ -25,6 +30,13 @@
     "node_modules",
     "build",
     "dist"
+  ],
+  "include": [
+    "env.d.ts",
+    "packages/**/*.ts",
+    "packages/**/*.tsx",
+    "packages/**/*.vue",
+    "packages/**/*.js",
   ],
   "esModuleInterop": true,
   "allowSyntheticDefaultImports": true,

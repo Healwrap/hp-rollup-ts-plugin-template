@@ -20,6 +20,9 @@
   "keywords": [],
   "author": "pepedd864",
   "license": "ISC",
+  "dependencies": {
+    "@template/core": "workspace:*"
+  },
   "devDependencies": {
     "@babel/core": "^7.24.7",
     "@babel/preset-env": "^7.24.7",
